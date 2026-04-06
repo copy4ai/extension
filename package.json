@@ -17,6 +17,15 @@
         "dependencies",
         "context"
     ],
+    "author": "copy4ai",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/copy4ai/extension.git"
+    },
+    "homepage": "https://copy4ai.xyz",
+    "bugs": {
+        "url": "https://github.com/copy4ai/extension/issues"
+    },
     "icon": "media/icon.png",
     "main": "./out/extension.js",
     "activationEvents": [],
