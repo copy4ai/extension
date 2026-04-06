@@ -40,10 +40,10 @@ export const MIN_DEPTH = 1;
 
 export const HISTORY_MAX_ENTRIES = 5;
 
-export const API_BASE = "https://copy4ai.xyz/api";
+export const API_BASE = "https://copy4ai.xyz";
 export const API_BASE_DEV = "http://localhost:3000";
 
-export const DASHBOARD_BASE = "https://copy4ai.xyz/api";
+export const DASHBOARD_BASE = "https://app.copy4ai.xyz";
 export const DASHBOARD_BASE_DEV = "http://localhost:5174";
 
 // Extension API endpoint paths (all prefixed with /api/v1/extension)

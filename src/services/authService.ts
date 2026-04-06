@@ -57,7 +57,7 @@ export class AuthService {
         this.pendingCodeVerifier = generateCodeVerifier();
         const codeChallenge = await generateCodeChallenge(this.pendingCodeVerifier);
 
-        const authUrl = `${getDashboardBase()}/auth/extension?code_challenge=${encodeURIComponent(codeChallenge)}`;
+        const authUrl = `${getDashboardBase()}/login?code_challenge=${encodeURIComponent(codeChallenge)}`;
         await vscode.env.openExternal(vscode.Uri.parse(authUrl));
     }
 
