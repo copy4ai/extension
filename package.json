@@ -1,0 +1,138 @@
+{
+    "name": "copy4ai",
+    "displayName": "Copy4AI",
+    "description": "Copy code with its dependencies in AI-optimized Markdown format",
+    "version": "0.1.0",
+    "publisher": "copy4ai",
+    "engines": {
+        "vscode": "^1.85.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "copy",
+        "ai",
+        "markdown",
+        "dependencies",
+        "context"
+    ],
+    "icon": "media/icon.png",
+    "main": "./out/extension.js",
+    "activationEvents": [],
+    "contributes": {
+        "commands": [
+            {
+                "command": "copy4ai.copyWithContext",
+                "title": "Copy with Copy4AI"
+            },
+            {
+                "command": "copy4ai.setToken",
+                "title": "Copy4AI: Set Auth Token"
+            },
+            {
+                "command": "copy4ai.pasteFromAI",
+                "title": "Copy4AI: Paste from AI"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "copy4ai.copyWithContext",
+                    "when": "editorHasSelection",
+                    "group": "9_copy4ai"
+                },
+                {
+                    "command": "copy4ai.pasteFromAI",
+                    "when": "editorFocus",
+                    "group": "9_copy4ai"
+                }
+            ]
+        },
+        "keybindings": [
+            {
+                "command": "copy4ai.copyWithContext",
+                "key": "ctrl+shift+c",
+                "mac": "cmd+shift+c",
+                "when": "editorTextFocus && editorHasSelection"
+            },
+            {
+                "command": "copy4ai.pasteFromAI",
+                "key": "ctrl+shift+v",
+                "mac": "cmd+shift+v",
+                "when": "editorFocus"
+            }
+        ],
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "copy4ai-sidebar",
+                    "title": "Copy4AI",
+                    "icon": "media/icon.svg"
+                }
+            ]
+        },
+        "configuration": {
+            "title": "Copy4AI",
+            "properties": {
+                "copy4ai.apiUrl": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Custom API URL (leave empty for default). Use http://localhost:3000 for local development."
+                },
+                "copy4ai.aiProvider": {
+                    "type": "string",
+                    "default": "copy4ai",
+                    "enum": [
+                        "copy4ai",
+                        "anthropic",
+                        "openai"
+                    ],
+                    "enumDescriptions": [
+                        "Use Copy4AI credits (no API key needed)",
+                        "Use your own Anthropic API key",
+                        "Use your own OpenAI API key"
+                    ],
+                    "description": "AI provider for JSDoc generation"
+                },
+                "copy4ai.anthropicApiKey": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Your Anthropic API key (for JSDoc generation with your own key)"
+                },
+                "copy4ai.openaiApiKey": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Your OpenAI API key (for JSDoc generation with your own key)"
+                }
+            }
+        },
+        "views": {
+            "copy4ai-sidebar": [
+                {
+                    "type": "webview",
+                    "id": "copy4ai.sidebarView",
+                    "name": "Copy4AI"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "pnpm run build",
+        "build:dev": "node esbuild.js",
+        "build:prod": "node esbuild.js --production",
+        "watch": "node esbuild.js --watch",
+        "watch:prod": "node esbuild.js --watch --production",
+        "lint": "eslint src --ext ts"
+    },
+    "devDependencies": {
+        "@types/node": "^20.11.0",
+        "@types/react": "^19.2.14",
+        "@types/react-dom": "^19.2.3",
+        "@types/vscode": "^1.85.0",
+        "esbuild": "^0.20.0",
+        "react": "^19.2.4",
+        "react-dom": "^19.2.4",
+        "typescript": "^5.3.0"
+    }
+}

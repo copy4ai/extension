@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "watch-extension",
+            "type": "shell",
+            "command": "pnpm",
+            "args": ["run", "watch"],
+            "options": {
+                "cwd": "${workspaceFolder}/apps/extension"
+            },
+            "isBackground": true,
+            "problemMatcher": {
+                "owner": "esbuild",
+                "fileLocation": ["relative", "${workspaceFolder}"],
+                "pattern": {
+                    "regexp": "^(.+):(\\d+):(\\d+): (error|warning): (.+)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "\\[watch\\] build started",
+                    "endsPattern": "\\[watch\\] build finished"
+                }
+            }
+        }
+    ]
+}
